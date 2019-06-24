@@ -179,6 +179,11 @@ public class ECSTaskTemplateStepExecution extends AbstractStepExecutionImpl {
                         new Object[] { cloudName, taskTemplate.getTemplateName() });
                 return;
             }
+            if (taskTemplate.getTaskDefinitionOverride() != null) {
+                LOGGER.log(Level.INFO, "Custom task definition {0} not removed",
+                        new Object[] { taskTemplate.getTaskDefinitionOverride() });
+                return;
+            }
             if (c instanceof ECSCloud) {
                 LOGGER.log(Level.INFO, "Removing task template {1} from cloud {0}",
                         new Object[] { c.name, taskTemplate.getTemplateName() });
